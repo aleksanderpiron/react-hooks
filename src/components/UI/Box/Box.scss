@@ -1,0 +1,12 @@
+.box{
+    width: 250px;
+    margin: 15px;
+    padding: 10px;
+    border: 1px solid #eee;
+    box-shadow: 0 0 4px #ccc;
+    text-align: left;
+    .box__title{
+        font-size: 1.2em;
+        font-weight: 700;
+    }
+}
