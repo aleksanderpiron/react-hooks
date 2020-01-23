@@ -8,15 +8,18 @@
             &.form__submit{
                 text-align: center;
             }
-            input{
-                box-sizing: border-box;
-                padding: 7px 10px;
-                width: 100%;
-                border: 1px solid #ccc;
-            }
         }
         .button{
             margin: auto;
+        }
+    }
+    .ingredients__search{
+        padding-bottom: 20px;
+        input{
+            background-image: url('../../assets/search.svg');
+            background-position: center right 10px;
+            background-size: 15px;
+            background-repeat: no-repeat;
         }
     }
     .ingredients__list{

@@ -1,19 +1,17 @@
 import React from 'react';
-import Box from '../UI/Box/Box';
+import Loader from '../UI/Loader/Loader';
 
-const IngredientsList=({items})=>{
+const IngredientsList=({items, loading})=>{
     let list = items.map(it=>{
-        return <li key={it.id} className="ingredients__item"><span>{it.name}</span><span>{it.amount}</span></li>
+        return <li key={it.id} className="ingredients__item"><span>{it.name}</span><span>x{it.amount}</span></li>
     });
     if(items.length===0){
         list = <p>Empty!</p>
     }
     return(
-        <Box center>
-            <ul className='ingredients__list'>
-                {list}
-            </ul>
-        </Box>
+        <ul className='ingredients__list'>
+            {loading?<Loader/>:list}       
+        </ul>
     )
 }
 

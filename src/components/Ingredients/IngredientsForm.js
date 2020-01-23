@@ -3,13 +3,13 @@ import Button from '../UI/Button/Button';
 import Box from '../UI/Box/Box';
 
 const IngredientsForm=({addIng, dbUrl})=>{
-    const [enteredName, setName] = useState(''),
-    [enteredAmount, setAmount] = useState(''),
+    const [nameValue, setName] = useState(''),
+    [amountValue, setAmount] = useState(''),
     submitHandler=async(e)=>{
         e.preventDefault();
         const ing = {
-            name:enteredName,
-            amount:enteredAmount
+            name:nameValue,
+            amount:amountValue
         };
         try{
             const resp = await fetch(dbUrl, {
@@ -40,7 +40,7 @@ const IngredientsForm=({addIng, dbUrl})=>{
                         id="name"
                         name="name"
                         type="text"
-                        value={enteredName}
+                        value={nameValue}
                         onChange={(e)=>setName(e.target.value)}/>
                 </label>
                 <label>
@@ -49,7 +49,7 @@ const IngredientsForm=({addIng, dbUrl})=>{
                         id="amount"
                         name="amount"
                         type="number"
-                        value={enteredAmount}
+                        value={amountValue}
                         onChange={(e)=>setAmount(e.target.value)}/>
                 </label>
                 <label className='form__submit'>

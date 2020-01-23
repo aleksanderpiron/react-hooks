@@ -9,7 +9,7 @@ const App=()=>{
       <h2>Shop list</h2>
       <Ingredients/>
       <Modal>
-        <p className='modal__title'>Hej</p>
+        <p className='modal__title'>Test</p>
       </Modal>
     </div>
   );
