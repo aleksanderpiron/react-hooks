@@ -1,0 +1,84 @@
+.notif{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    .notif__item{
+        margin: 5px 0;
+        display: flex;
+        min-height: 50px;
+        width: 250px;
+        .notif__img{
+            width: 50px;
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            &::before{
+                width: 20px;
+                height: 20px;
+                display: block;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin: auto;
+                transition: 300ms;
+            }
+            &::after{
+                content: url('../../../assets/close.svg');
+                width: 17px;
+                height: 17px;
+                display: block;
+                position: absolute;
+                top: -150px;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin: auto;
+                transition: 300ms;
+            }
+            &:hover{
+                &::before{
+                    top: 150px;
+                }
+                &::after{
+                    top: 0;
+                }
+            }
+        }
+        .notif__text{
+            padding: 10px;
+            box-sizing: border-box;
+            width: calc(100% - 50px);
+            text-align: left;
+            display: flex;
+            align-items: center;
+            p{
+                color: #fff;
+            }
+        }
+        &.notif--success{
+            .notif__img{
+                background-color: #28a745;
+                &::before{
+                    content: url('../../../assets/success.svg');
+                }
+            }
+            .notif__text{
+                background-color: #61b976;
+            }
+        }
+        &.notif--error{
+            .notif__img{
+                background-color: #c92424;
+                &::before{
+                    content: url('../../../assets/error.svg');
+                }
+            }
+            .notif__text{
+                background-color: #eb5f5f;
+                
+            }
+        }
+    }
+}

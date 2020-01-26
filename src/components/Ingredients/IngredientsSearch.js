@@ -4,9 +4,15 @@ const IngredientsSearch=({getList, setLoading})=>{
     const [searchValue, setSearch] = useState(''),
     searchInput = useRef();
     useEffect(()=>{
-        getList(searchValue);
-        setLoading(false);
-        console.log('turn down')
+        const searchTimer = setTimeout(()=>{
+            if(searchValue !== searchInput.value){
+                setLoading(true);
+                getList(searchValue);
+            }
+        }, 500)
+        return ()=>{
+            clearTimeout(searchTimer);
+        }
     }, [searchValue, getList, setLoading])
     return(
         <div className="ingredients__search">

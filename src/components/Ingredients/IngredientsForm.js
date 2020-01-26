@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Button from '../UI/Button/Button';
 import Box from '../UI/Box/Box';
 
-const IngredientsForm=({addIng, dbUrl})=>{
+const IngredientsForm=({addIng, getList, dbUrl})=>{
     const [nameValue, setName] = useState(''),
     [amountValue, setAmount] = useState(''),
     submitHandler=async(e)=>{
@@ -22,11 +22,12 @@ const IngredientsForm=({addIng, dbUrl})=>{
             data = await resp.json();
             if(resp.status!==200){
                 throw new Error('Something went wrong with posting item to database');
+            }else{
+                ing.id = data.name;
+                getList();
+                setName('');
+                setAmount('');
             }
-            ing.id = data.name;
-            addIng(ing);
-            setName('');
-            setAmount('');
         }catch(err){
             console.log(err);
         };
