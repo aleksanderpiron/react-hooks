@@ -40,7 +40,7 @@ const Ingredients=({pushNotif})=>{
                     }
                 });
             }
-            setLoading(false);
+            // setLoading(false);
             setIngredients(ingredients);
         }catch(err){
             console.log(err);

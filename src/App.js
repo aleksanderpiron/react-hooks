@@ -16,7 +16,7 @@ const App=()=>{
       return notif.id !== notifId;
     });
     setNotifs(newNotifs);
-  }
+  };
   return (
     <div className="App">
       <h2>Shop list</h2>

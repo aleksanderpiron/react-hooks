@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
+import Input from '../UI/Input/Input';
 
 const IngredientsSearch=({getList, setLoading})=>{
     const [searchValue, setSearch] = useState(''),
@@ -13,15 +14,15 @@ const IngredientsSearch=({getList, setLoading})=>{
         return ()=>{
             clearTimeout(searchTimer);
         }
-    }, [searchValue, getList, setLoading])
+    }, [searchValue, getList, setLoading]);
     return(
         <div className="ingredients__search">
-            <input
-            ref={searchInput}
+            <Input
+            referance={searchInput}
             value={searchValue}
             type="text"
             name="search"
-            onChange={e=>{setSearch(e.target.value)}}/>
+            change={e=>{setSearch(e.target.value)}}/>
             <small>Full names only for now</small>
         </div>
     )
