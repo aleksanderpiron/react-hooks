@@ -18,12 +18,8 @@ const App=()=>{
       return notif.id !== notifId;
     });
     setNotifs(newNotifs);
-<<<<<<< HEAD
   }
   console.log(auth.login())
-=======
-  };
->>>>>>> 2c8de2b5773a926babed6ad3e92083becfb986e6
   return (
     <div className="App">
       <h2>Shop list</h2>

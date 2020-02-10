@@ -56,13 +56,8 @@ const Ingredients=({pushNotif})=>{
                     }
                 });
             }
-<<<<<<< HEAD
             setLoading(false);
             dispatch({type:'SET', ing:ingredients});
-=======
-            // setLoading(false);
-            setIngredients(ingredients);
->>>>>>> 2c8de2b5773a926babed6ad3e92083becfb986e6
         }catch(err){
             console.log(err);
             pushNotif('Something went wrong with getting ingredients from database! Try again later.', 'error');
