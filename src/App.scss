@@ -20,5 +20,25 @@ input{
     box-sizing: border-box;
     padding: 7px 10px;
     width: 100%;
-    border: 1px solid #ccc;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    &[type=number]{
+        -webkit-appearance: none;
+        -moz-appearance:textfield;
+    }
+}
+label{
+    position: relative;
+    input:focus ~ .line{
+        width: 100%;
+    }
+    .line{
+        transition: 300ms;
+        height: 2px;
+        width: 0%;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        background-color: #7c69a5;
+    }
 }

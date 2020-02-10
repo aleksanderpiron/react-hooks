@@ -3,9 +3,11 @@
     right: 0;
     bottom: 0;
     .notif__item{
+        transition: 300ms;
         margin: 5px 0;
         display: flex;
         min-height: 50px;
+        max-height: 200px;
         width: 250px;
         .notif__img{
             width: 50px;
@@ -30,7 +32,7 @@
                 height: 17px;
                 display: block;
                 position: absolute;
-                top: -150px;
+                top: -250px;
                 bottom: 0;
                 left: 0;
                 right: 0;
@@ -39,7 +41,7 @@
             }
             &:hover{
                 &::before{
-                    top: 150px;
+                    top: 250px;
                 }
                 &::after{
                     top: 0;
@@ -77,8 +79,26 @@
             }
             .notif__text{
                 background-color: #eb5f5f;
-                
+
             }
         }
     }
+}
+.swipe-right-enter{
+    transform: translateX(100%);
+    opacity: 0;
+}
+.swipe-right-enter-active{
+    transition: 300ms;
+    transform: translateX(0);
+    opacity: 1;
+}
+.swipe-right-exit{
+    transform: translateX(0);
+    opacity: 1;
+}
+.swipe-right-exit-active{
+    transition: 300ms;
+    transform: translateX(100%);
+    opacity: 0;
 }

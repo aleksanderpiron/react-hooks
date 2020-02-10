@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Button from '../UI/Button/Button';
 import Box from '../UI/Box/Box';
+import Input from '../UI/Input/Input';
 
 const IngredientsForm=({getList, dbUrl})=>{
     const [nameValue, setName] = useState(''),
@@ -35,27 +36,18 @@ const IngredientsForm=({getList, dbUrl})=>{
     return(
         <Box center>
             <form onSubmit={submitHandler} className="ingredients__form">
-                <label>
-                    <p>Name</p>
-                    <input
-                        id="name"
-                        name="name"
-                        type="text"
-                        value={nameValue}
-                        onChange={(e)=>setName(e.target.value)}/>
-                </label>
-                <label>
-                    <p>Amount</p>
-                    <input
-                        id="amount"
-                        name="amount"
-                        type="number"
-                        value={amountValue}
-                        onChange={(e)=>setAmount(e.target.value)}/>
-                </label>
-                <label className='form__submit'>
+                <Input
+                label="Name"
+                value={nameValue}
+                change={(e)=>setName(e.target.value)}/>
+                <Input
+                label="Amount"
+                type="number"
+                value={amountValue}
+                change={(e)=>setAmount(e.target.value)}/>
+                <div className='form__submit'>
                     <Button type='submit' color='secondary'>Add</Button>
-                </label>
+                </div>
             </form>
         </Box>
     )

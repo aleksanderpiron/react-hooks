@@ -1,13 +1,25 @@
 .ingredients{
     .ingredients__form{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
         label{
-            display: block;
-            padding-bottom: 10px;
+            display: inline-block;
+            margin-bottom: 10px;
             font-size: 12px;
             font-weight: 600;
-            &.form__submit{
-                text-align: center;
+            &:nth-child(1){
+                width: 69%;
             }
+            &:nth-child(2){
+                width: 30%;
+            }
+        }
+        .form__submit{
+            padding-top: 20px;
+            width: 100%;
+            text-align: center;
+            display: block;
         }
         .button{
             margin: auto;
