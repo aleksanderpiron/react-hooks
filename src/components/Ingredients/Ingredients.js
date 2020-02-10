@@ -1,7 +1,8 @@
-import React, {useState, useCallback, useReducer} from 'react';
+import React, {useState, useCallback, useReducer, useContext} from 'react';
 import IngredientsForm from './IngredientsForm';
 import IngredientsList from './IngredientsList';
 import IngredientsSearch from './IngredientsSearch';
+import {AuthContext} from '../Auth/Auth';
 import Box from '../UI/Box/Box';
 import './Ingredients.scss';
 
@@ -23,6 +24,7 @@ const ingredientReducer = (currentState, action) => {
 const Ingredients=({pushNotif})=>{
     const [ingredients, dispatch] = useReducer(ingredientReducer, []),
     [loading, setLoading] = useState(true),
+    auth=useContext(AuthContext),
     dbUrl = 'https://hookspractise.firebaseio.com/ingredients.json',
     removeIngHandler=async(ingId=null)=>{
         if(ingId !== null){
@@ -65,6 +67,8 @@ const Ingredients=({pushNotif})=>{
     },[pushNotif]);
     return(
         <div className="ingredients">
+            {auth.isAuth?<p>Logged</p>:<p>Not Logged</p>}
+            <button onClick={auth.login}>Click</button>
             <IngredientsForm getList={getListHandler} dbUrl={dbUrl}/>
             <Box center>
                 <IngredientsSearch setLoading={setLoading} getList={getListHandler}/>
