@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Button from '../UI/Button/Button';
 import Box from '../UI/Box/Box';
 
-const IngredientsForm=({addIng, getList, dbUrl})=>{
+const IngredientsForm=({getList, dbUrl})=>{
     const [nameValue, setName] = useState(''),
     [amountValue, setAmount] = useState(''),
     submitHandler=async(e)=>{
