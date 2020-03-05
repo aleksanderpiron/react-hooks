@@ -16,4 +16,15 @@
     &.button--secondary{
         background-color: rgb(103, 226, 119);
     }
+    &.button--danger{
+        background-color: rgb(207, 26, 26);
+    }
+}
+.button-box{
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    &.button-box--center{
+        text-align: center;
+    }
 }

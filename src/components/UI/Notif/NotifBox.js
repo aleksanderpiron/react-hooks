@@ -3,7 +3,7 @@ import NotifItem from './NotifItem';
 import {CSSTransition, TransitionGroup} from 'react-transition-group';
 import './Notif.scss';
 
-const Notif=({notifs, removeNotif})=>{
+const NotifBox=({notifs, removeNotif})=>{
     const content = notifs.map(({type, label, id})=>{
         return <CSSTransition
         timeout={300}
@@ -21,4 +21,4 @@ const Notif=({notifs, removeNotif})=>{
     )
 }
 
-export default Notif;
+export default NotifBox;

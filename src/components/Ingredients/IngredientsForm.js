@@ -3,14 +3,19 @@ import Button from '../UI/Button/Button';
 import Box from '../UI/Box/Box';
 import Input from '../UI/Input/Input';
 
-const IngredientsForm=({getList, dbUrl})=>{
+const IngredientsForm = React.memo(({getList, dbUrl})=>{
     const [nameValue, setName] = useState(''),
     [amountValue, setAmount] = useState(''),
     submitHandler=async(e)=>{
         e.preventDefault();
+        let amount = amountValue;
+        if(amount === ''){
+            amount = 1;
+        }
+        console.log(amount);
         const ing = {
             name:nameValue,
-            amount:amountValue
+            amount
         };
         try{
             const resp = await fetch(dbUrl, {
@@ -45,12 +50,12 @@ const IngredientsForm=({getList, dbUrl})=>{
                 type="number"
                 value={amountValue}
                 change={(e)=>setAmount(e.target.value)}/>
-                <div className='form__submit'>
+                <div className='button-box button-box--center'>
                     <Button type='submit' color='secondary'>Add</Button>
                 </div>
             </form>
         </Box>
     )
-}
+});
 
 export default IngredientsForm;

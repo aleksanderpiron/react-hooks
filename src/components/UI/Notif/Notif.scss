@@ -70,6 +70,18 @@
                 background-color: #61b976;
             }
         }
+        &.notif--info{
+            .notif__img{
+                background-color: #334e99;
+                &::before{
+                    content: url('../../../assets/error.svg');
+                }
+            }
+            .notif__text{
+                background-color: #6284e2;
+
+            }
+        }
         &.notif--error{
             .notif__img{
                 background-color: #c92424;

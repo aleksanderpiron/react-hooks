@@ -2,6 +2,7 @@ import React, {useState, useCallback, useReducer, useContext} from 'react';
 import IngredientsForm from './IngredientsForm';
 import IngredientsList from './IngredientsList';
 import IngredientsSearch from './IngredientsSearch';
+import LoginForm from '../UI/LoginForm/LoginForm';
 import {AuthContext} from '../Auth/Auth';
 import Box from '../UI/Box/Box';
 import './Ingredients.scss';
@@ -21,11 +22,12 @@ const ingredientReducer = (currentState, action) => {
     }
 }
 
-const Ingredients=({pushNotif})=>{
+const Ingredients=({createNotif})=>{
     const [ingredients, dispatch] = useReducer(ingredientReducer, []),
     [loading, setLoading] = useState(true),
     auth=useContext(AuthContext),
     dbUrl = 'https://hookspractise.firebaseio.com/ingredients.json',
+    password='test123',
     removeIngHandler=async(ingId=null)=>{
         if(ingId !== null){
             const resp = await fetch(`https://hookspractise.firebaseio.com/ingredients/${ingId}.json`,{
@@ -62,18 +64,30 @@ const Ingredients=({pushNotif})=>{
             dispatch({type:'SET', ing:ingredients});
         }catch(err){
             console.log(err);
-            pushNotif('Something went wrong with getting ingredients from database! Try again later.', 'error');
+            createNotif('Something went wrong with getting ingredients from database! Try again later.', 'error');
         }
-    },[pushNotif]);
+    },[createNotif]),
+    loginHandler=(val, errorCb)=>{
+        if(val.toUpperCase() === password.toUpperCase()){
+            createNotif('You have logged in successfuly', 'info', 3000);
+            auth.login();
+        }else{
+            errorCb();
+        }
+    }
     return(
         <div className="ingredients">
-            {auth.isAuth?<p>Logged</p>:<p>Not Logged</p>}
-            <button onClick={auth.login}>Click</button>
+            {auth.isAuth?<p>Logged/List Showed</p>:<p>Not Logged/List Hidden</p>}
             <IngredientsForm getList={getListHandler} dbUrl={dbUrl}/>
             <Box center>
-                <IngredientsSearch setLoading={setLoading} getList={getListHandler}/>
-                <IngredientsList removeIng={removeIngHandler} loading={loading} items={ingredients}/>
+                {!auth.isAuth?<LoginForm login={loginHandler}/>:
+                <>
+                    <IngredientsSearch setLoading={setLoading} getList={getListHandler}/>
+                    <IngredientsList removeIng={removeIngHandler} loading={loading} items={ingredients}/>
+                </>
+                }
             </Box>
+            <small>Dummy password: test123</small>
         </div>
     )
 }

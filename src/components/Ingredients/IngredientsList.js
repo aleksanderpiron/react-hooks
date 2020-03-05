@@ -1,7 +1,10 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {AuthContext} from '../Auth/Auth';
+import Button from '../UI/Button/Button';
 import Loader from '../UI/Loader/Loader';
 
 const IngredientsList=({items, removeIng, loading})=>{
+    const auth = useContext(AuthContext);
     let list = items.map(it=>{
         return <li
         onClick={()=>removeIng(it.id)}
@@ -14,9 +17,14 @@ const IngredientsList=({items, removeIng, loading})=>{
         list = <p>Empty!</p>
     }
     return(
-        <ul className='ingredients__list'>
-            {loading?<Loader/>:list}
-        </ul>
+        <>
+            <ul className='ingredients__list'>
+                {loading?<Loader/>:list}
+            </ul>
+            <div className="button-box button-box--center">
+                <Button color='danger' click={()=>{auth.logout()}}>Logout</Button>
+            </div>
+        </>
     )
 }
 

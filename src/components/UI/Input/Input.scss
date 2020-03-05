@@ -1,0 +1,74 @@
+input{
+    box-sizing: border-box;
+    padding: 7px 10px;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    transition: 300ms;
+    &[type=number]{
+        -webkit-appearance: none;
+        -moz-appearance:textfield;
+    }
+    &.error{
+        & ~ .line{
+            background-color: #ec0000;
+        }
+    }
+}
+label{
+    position: relative;
+    display: block;
+    padding-top: 15px;
+    input:focus{
+        & ~ .line{
+            width: 100%;
+        }
+        & ~ p{
+            bottom: 28px;
+            left: 0;
+        }
+    }
+    input:not(:placeholder-shown){
+        & ~ p{
+            bottom: 28px;
+            left: 0;
+        }
+        & ~ .line{
+            width: 100%;
+        }
+    }
+    p{
+        position: absolute;
+        bottom: 8px;
+        left: 10px;
+        color: #bbb;
+        transition: 300ms;
+        font-size: 12px;
+        font-weight: 600;
+    }
+    .line{
+        transition: 300ms;
+        height: 2px;
+        width: 0%;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        background-color: #7c69a5;
+    }
+}
+.error-message{
+    text-align: center;
+    color: #ec0000;
+    font-weight: 700;
+    font-size: 11px;
+    margin-top: 5px;
+    z-index: -1;
+    opacity: 0;
+    transform:translateY(-10px);
+    transition: 300ms;
+    &.error-message--visible{
+        z-index: 9;
+        opacity: 1;
+        transform:translateY(0);
+    }
+}

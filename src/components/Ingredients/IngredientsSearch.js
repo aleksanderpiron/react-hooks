@@ -7,7 +7,7 @@ const IngredientsSearch=({getList, setLoading})=>{
     useEffect(()=>{
         const searchTimer = setTimeout(()=>{
             if(searchValue !== searchInput.value){
-                setLoading(true);
+                // setLoading(true);
                 getList(searchValue);
             }
         }, 500)

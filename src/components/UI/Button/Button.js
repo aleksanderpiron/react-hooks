@@ -1,9 +1,9 @@
 import React from 'react';
 import './Button.scss';
 
-const Button =({children, color, type = 'button'})=>{
+const Button =({children, color, type = 'button', click})=>{
     return(
-        <button type={type} className={`button ${typeof color!=='undefined'?'button--'+color:''}`}>
+        <button type={type} onClick={click} className={`button ${typeof color!=='undefined'?'button--'+color:''}`}>
             {children}
         </button>
     )
